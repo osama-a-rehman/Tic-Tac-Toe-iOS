@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import Darwin
 
 class PlayGameVC: UIViewController {
 
+    @IBOutlet weak var playerTurnLabel: UILabel!
     var playerTurn = 1
     
     var game = [0, 0, 0, 0, 0, 0, 0, 0, 0]
@@ -19,7 +21,8 @@ class PlayGameVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        playerTurnLabel.text = "Player 1\'s turn"
     }
     
     @IBAction func putInput(_ sender: AnyObject) {
@@ -30,9 +33,11 @@ class PlayGameVC: UIViewController {
                 sender.setImage(UIImage(named: "Cross.png"), for: .normal)
                 
                 playerTurn = 2
+                playerTurnLabel.text = "Player 2\'s turn"
             }else{
                 sender.setImage(UIImage(named: "Nought.png"), for: .normal)
                 playerTurn = 1
+                playerTurnLabel.text = "Player 1\'s turn"
             }
             
             game[btnTag] = playerTurn
@@ -40,7 +45,7 @@ class PlayGameVC: UIViewController {
             let hasWin = checkWin()
             
             if hasWin {
-                print("\((playerTurn == 1 ? 2 : 1)) has won")
+                playerTurnLabel.text = "Player \((playerTurn == 1 ? 2 : 1)) has won"
                 
                 gameRunning = false
             }
@@ -48,9 +53,22 @@ class PlayGameVC: UIViewController {
     }
     
     @IBAction func btnNewGamePressed(_ sender: AnyObject) {
+        game = [0, 0, 0, 0, 0, 0, 0, 0, 0]
+        
+        gameRunning = true
+        
+        playerTurn = 1
+        
+        for case let button as UIButton in self.view.subviews {
+            button.setImage(nil, for: .normal)
+        }
+        
+        playerTurnLabel.text = "Player 1\'s turn"
+
     }
     
     @IBAction func btnExitPressed(_ sender: AnyObject) {
+        exit(0)
     }
     
     func checkWin() -> Bool{

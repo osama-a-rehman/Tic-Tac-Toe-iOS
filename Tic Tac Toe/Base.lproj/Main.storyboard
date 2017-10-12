@@ -82,7 +82,7 @@
                                     <action selector="putInput:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5fw-q4-IJj"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aSh-ay-E4o">
+                            <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aSh-ay-E4o">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="ItZ-yH-AIm"/>
                                     <constraint firstAttribute="height" constant="120" id="f6T-fa-bYE"/>
@@ -102,6 +102,32 @@
                                     <action selector="putInput:" destination="BYZ-38-t0r" eventType="touchUpInside" id="M9w-c7-cLz"/>
                                 </connections>
                             </button>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="05w-ma-Csu">
+                                <frame key="frameInset" height="44" maxY="603"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem title="New Game" id="NFp-fb-Atg">
+                                        <connections>
+                                            <action selector="btnNewGamePressed:" destination="BYZ-38-t0r" id="u4E-j0-f6c"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="SzE-vp-BHy"/>
+                                    <barButtonItem title="Exit" id="bn8-MH-fq4">
+                                        <connections>
+                                            <action selector="btnExitPressed:" destination="BYZ-38-t0r" id="tGp-ks-sKw"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iT0-j8-tWp">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="220" id="hKD-Vu-88I"/>
+                                    <constraint firstAttribute="height" constant="40" id="ov6-u2-wLA"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="19"/>
+                                <color key="textColor" red="0.067256609827314531" green="0.081918478401699163" blue="0.13987151015228427" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -112,11 +138,13 @@
                             <constraint firstItem="pl4-Ed-ju8" firstAttribute="centerX" secondItem="szY-P6-hAo" secondAttribute="centerX" id="FvE-YS-tNk"/>
                             <constraint firstItem="eT7-oe-hYk" firstAttribute="top" secondItem="697-pd-T4U" secondAttribute="bottom" constant="3" id="Hcv-XQ-xdO"/>
                             <constraint firstAttribute="trailing" secondItem="aSh-ay-E4o" secondAttribute="trailing" id="Jy6-nb-baz"/>
+                            <constraint firstItem="iT0-j8-tWp" firstAttribute="top" secondItem="aSh-ay-E4o" secondAttribute="bottom" constant="56" id="NsF-d8-YHX"/>
                             <constraint firstItem="meB-xF-SxS" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="130" id="TNU-uU-eJx"/>
                             <constraint firstItem="2pV-NY-5x2" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="130" id="WD2-PK-Z8f"/>
                             <constraint firstAttribute="trailing" secondItem="szY-P6-hAo" secondAttribute="trailing" id="Xlb-iw-RLP"/>
                             <constraint firstItem="agm-Qn-ClX" firstAttribute="centerX" secondItem="szY-P6-hAo" secondAttribute="centerX" id="XwE-6l-gSY"/>
                             <constraint firstItem="pl4-Ed-ju8" firstAttribute="top" secondItem="f1S-jX-sRI" secondAttribute="bottom" constant="3" id="Zeb-Ta-bWf"/>
+                            <constraint firstItem="iT0-j8-tWp" firstAttribute="centerX" secondItem="szY-P6-hAo" secondAttribute="centerX" id="bjf-PI-yg1"/>
                             <constraint firstItem="agm-Qn-ClX" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="130" id="bwX-wF-zqU"/>
                             <constraint firstItem="SC7-uP-6ls" firstAttribute="top" secondItem="meB-xF-SxS" secondAttribute="bottom" constant="3" id="e5Y-DE-iMu"/>
                             <constraint firstItem="eT7-oe-hYk" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="epA-Mp-BO6"/>
@@ -128,6 +156,9 @@
                             <constraint firstItem="697-pd-T4U" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="z0R-tL-SO3"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="playerTurnLabel" destination="iT0-j8-tWp" id="c7s-0m-9E4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
