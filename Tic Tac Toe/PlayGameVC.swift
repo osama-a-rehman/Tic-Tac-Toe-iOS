@@ -48,6 +48,14 @@ class PlayGameVC: UIViewController {
                 playerTurnLabel.text = "Player \((playerTurn == 1 ? 2 : 1)) has won"
                 
                 gameRunning = false
+            }else{
+                let check = checkDraw()
+                
+                if check == true {
+                    playerTurnLabel.text = "The match has drawn!"
+                    
+                    gameRunning = false
+                }
             }
         }
     }
@@ -79,6 +87,16 @@ class PlayGameVC: UIViewController {
         }
         
         return false
+    }
+    
+    func checkDraw() -> Bool {
+        for number in game {
+            if number == 0 {
+                return false
+            }
+        }
+        
+        return true
     }
 }
 
