@@ -12,7 +12,7 @@ import Darwin
 class PlayGameVC: UIViewController {
 
     @IBOutlet weak var playerTurnLabel: UILabel!
-    var playerTurn = 1
+    public var playerTurn = 1
     
     var game = [0, 0, 0, 0, 0, 0, 0, 0, 0]
     var gameRunning = true
@@ -48,6 +48,8 @@ class PlayGameVC: UIViewController {
                 playerTurnLabel.text = "Player \((playerTurn == 1 ? 2 : 1)) has won"
                 
                 gameRunning = false
+                
+                performSegue(withIdentifier: "ResultVCSegue", sender: (playerTurn == 1 ? 2 : 1))
             }else{
                 let check = checkDraw()
                 
@@ -55,7 +57,17 @@ class PlayGameVC: UIViewController {
                     playerTurnLabel.text = "The match has drawn!"
                     
                     gameRunning = false
+                    
+                    performSegue(withIdentifier: "ResultVCSegue", sender: -1)
                 }
+            }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? ResultVC {
+            if let result = sender as? Int {
+                destination.result = result
             }
         }
     }
@@ -74,6 +86,8 @@ class PlayGameVC: UIViewController {
         playerTurnLabel.text = "Player 1\'s turn"
 
     }
+    
+    
     
     @IBAction func btnExitPressed(_ sender: AnyObject) {
         exit(0)

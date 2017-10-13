@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -158,11 +159,76 @@
                     </view>
                     <connections>
                         <outlet property="playerTurnLabel" destination="iT0-j8-tWp" id="c7s-0m-9E4"/>
+                        <segue destination="cnQ-c4-H3l" kind="presentation" identifier="ResultVCSegue" modalPresentationStyle="overCurrentContext" id="Cbf-zn-rUG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="112.8" y="120.98950524737631"/>
+        </scene>
+        <!--ResultVC-->
+        <scene sceneID="leb-Py-ojf">
+            <objects>
+                <viewController id="cnQ-c4-H3l" customClass="ResultVC" customModule="Tic_Tac_Toe" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0UP-46-QGl"/>
+                        <viewControllerLayoutGuide type="bottom" id="959-qW-d0B"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="g27-co-jeU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tiw-Bx-2jQ" userLabel="Result View">
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Match Result" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="giG-ZT-m0q">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="90" id="GqZ-P0-ciu"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="25"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5cD-Eh-O7I">
+                                        <color key="backgroundColor" red="0.33725490196078434" green="0.33725490196078434" blue="0.33725490196078434" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="WDy-eP-jLf"/>
+                                            <constraint firstAttribute="width" constant="139" id="qgq-XR-zs1"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                        <state key="normal" title="Play Again">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="btnPlayAgainPressed:" destination="cnQ-c4-H3l" eventType="touchUpInside" id="FSi-IJ-F6A"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.74509803921568629" green="0.73725490196078436" blue="0.73725490196078436" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="5cD-Eh-O7I" secondAttribute="bottom" constant="25" id="H23-fn-xEe"/>
+                                    <constraint firstItem="5cD-Eh-O7I" firstAttribute="centerX" secondItem="tiw-Bx-2jQ" secondAttribute="centerX" id="paj-dW-ewG"/>
+                                    <constraint firstAttribute="height" constant="150" id="sKX-iB-G4L"/>
+                                    <constraint firstItem="giG-ZT-m0q" firstAttribute="top" secondItem="tiw-Bx-2jQ" secondAttribute="top" id="swZ-h2-6E0"/>
+                                    <constraint firstAttribute="trailing" secondItem="giG-ZT-m0q" secondAttribute="trailing" id="wb3-Xm-380"/>
+                                    <constraint firstItem="giG-ZT-m0q" firstAttribute="leading" secondItem="tiw-Bx-2jQ" secondAttribute="leading" id="yvq-gm-OFL"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="tiw-Bx-2jQ" secondAttribute="trailing" constant="20" id="IfE-vF-hTf"/>
+                            <constraint firstItem="tiw-Bx-2jQ" firstAttribute="leading" secondItem="g27-co-jeU" secondAttribute="leadingMargin" constant="20" id="KzJ-Y2-y3O"/>
+                            <constraint firstItem="tiw-Bx-2jQ" firstAttribute="centerY" secondItem="g27-co-jeU" secondAttribute="centerY" id="L0R-Yd-Oib"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="labelMatchResult" destination="giG-ZT-m0q" id="ZOg-XY-6Be"/>
+                        <outlet property="resultViewLabel" destination="tiw-Bx-2jQ" id="AWx-gh-L9k"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fme-bi-vYG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="972" y="109.29535232383809"/>
         </scene>
     </scenes>
     <resources>
